@@ -9,3 +9,7 @@ const gulp = require('gulp');
     gulp.dest - point to the folder to output
     gulp.watch - watch files and folder for changes
 */
+
+gulp.task('message', function() {
+    return console.log('gulp is running');
+});
