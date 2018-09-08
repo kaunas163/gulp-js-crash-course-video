@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 
 /*
     TOP LEVEL FUNCTIONS
@@ -44,5 +45,13 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
+// Combine and minify JS files
+gulp.task('concat', function() {
+    gulp.src('src/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
+});
+
 // Default task
-gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass']);
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'concat']);
