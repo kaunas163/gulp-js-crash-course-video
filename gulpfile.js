@@ -55,3 +55,11 @@ gulp.task('concat', function() {
 
 // Default task
 gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'concat']);
+
+// Watch files and run tasks
+gulp.task('watch', function() {
+    gulp.watch('src/js/*.js', ['concat']);
+    gulp.watch('src/images/*', ['imageMin']);
+    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/*.html', ['copyHtml']);
+});
