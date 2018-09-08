@@ -45,6 +45,4 @@ gulp.task('sass', function () {
 });
 
 // Default task
-gulp.task('default', function() {
-    return console.log('gulp is running');
-});
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass']);
