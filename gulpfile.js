@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
-//const sass = require('gulp-sass');
+const sass = require('gulp-sass');
 
 /*
     TOP LEVEL FUNCTIONS
@@ -35,6 +35,13 @@ gulp.task('minify', function() {
     gulp.src('src/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
+});
+
+// Compile Sass
+gulp.task('sass', function () {
+    gulp.src('src/sass/*.scss')
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(gulp.dest('dist/css'));
 });
 
 // Default task
